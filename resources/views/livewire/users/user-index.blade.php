@@ -32,7 +32,7 @@
                     </div>
                     <div>
                         <!-- Button trigger modal Create -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal">
+                    <button type="button" class="btn btn-primary" wire:click="Openmodel">
                         New User
                     </button>
                     </div>

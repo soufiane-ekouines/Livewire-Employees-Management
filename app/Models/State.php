@@ -4,8 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class State extends Model
 {
     use HasFactory;
+
+    protected $fileable = ['country_id','name'];
+
+
+    public function country()
+    {
+        return $this->HasOne(Country::class);
+    }
 }

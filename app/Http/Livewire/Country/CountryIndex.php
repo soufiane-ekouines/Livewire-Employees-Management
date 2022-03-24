@@ -14,8 +14,13 @@ class CountryIndex extends Component
     public $countryid;
     protected $rules = [
         'country_code' => 'required',
-        'name' => 'required',
+        'name' => 'required|min:6',
     ];
+
+    // public function updated($propertyName)
+    // {
+    //     $this->validateOnly($propertyName);
+    // }
 
     //edit
     public function edit($id)
@@ -60,6 +65,20 @@ class CountryIndex extends Component
         session()->flash('Country_message','Country successfully created');
 
     }
+    //open model
+    public function Openmodel()
+    {
+        $this->reset();
+        $this->dispatchBrowserEvent('modal', ['modalId' => '#countryModal', 'actionModal' => 'show']);
+
+    }
+    //close model
+    public function Closemodel()
+    {
+        $this->reset();
+        $this->dispatchBrowserEvent('modal', ['modalId' => '#countryModal', 'actionModal' => 'hide']);
+    }
+
     public function render()
     {
         $Country = Country::where('name','like',"%{$this->search}%")->paginate(5);

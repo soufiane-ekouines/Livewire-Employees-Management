@@ -73,7 +73,13 @@ class UserIndex extends Component
         $this->dispatchBrowserEvent('modal', ['modalId' => '#userModal', 'actionModal' => 'hide']);
         session()->flash('message', 'User successfully updated');
     }
+    //open model
+    public function Openmodel()
+    {
+        $this->reset();
+        $this->dispatchBrowserEvent('modal', ['modalId' => '#userModal', 'actionModal' => 'show']);
 
+    }
     public function delete($id)
     {
         $u = User::where('id',$id)->delete();
