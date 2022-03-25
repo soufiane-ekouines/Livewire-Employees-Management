@@ -16,7 +16,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col">
-                        <form method="GET" action="{{ route('States.index') }}">
+                        <form method="GET" action="{{ route('states.index') }}">
                             <div class="form-row align-items-center">
                                 <div class="col">
                                     <input type="search" wire:model="search" class="form-control mb-2" id="inlineFormInput"
@@ -70,7 +70,7 @@
                     </tbody>
                 </table>
                 <div>
-                    {{ $States->links('pagination::bootstrap-4') }}
+                    {{-- {{ $States->links('pagination::bootstrap-4') }} --}}
                     {{-- {{ $States->links() }} --}}
 
                 </div>
@@ -89,15 +89,15 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group row">
-                            <label for="States_code"
-                                class="col-md-4 col-form-label text-md-right">{{ __('States_code') }}</label>
+                            <label for="country_id"
+                                class="col-md-4 col-form-label text-md-right">{{ __('country_id') }}</label>
 
                             <div class="col-md-6">
-                                <input id="States_code" type="text"
+                                <input id="country_id" type="text"
                                     class="form-control @error('name') is-invalid @enderror"
-                                    wire:model.defer="States_code">
+                                    wire:model.defer="country_id">
 
-                                @error('States_code')
+                                @error('country_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

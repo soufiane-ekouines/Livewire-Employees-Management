@@ -10,11 +10,11 @@ class State extends Model
 {
     use HasFactory;
 
-    protected $fileable = ['country_id','name'];
+    protected $fillable = ['country_id','name'];
 
 
     public function country()
     {
-        return $this->HasOne(Country::class);
+        return $this->belongsTo(Country::class);
     }
 }

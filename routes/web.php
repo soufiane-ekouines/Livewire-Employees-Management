@@ -28,5 +28,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 route::view('/dashboard','dashboard')->name('dashboard');
 route::get('/users',UserIndex::class)->name('users.index');
 route::get('/country',CountryIndex::class)->name('country.index');
-Route::get('/state',StatesIndex::class)->name('state.index');
+Route::get('/state',StatesIndex::class)->name('states.index');
 });
