@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\State;
 
+use App\Models\Country;
 use App\Models\State;
 use Livewire\Component;
 
@@ -71,6 +72,13 @@ class StatesIndex extends Component
         $this->dispatchBrowserEvent('modal', ['modalId' => '#StatesModal', 'actionModal' => 'show']);
 
     }
+
+    //close
+    public function Closemodel()
+    {
+        $this->reset();
+        $this->dispatchBrowserEvent('modal', ['modalId' => '#StatesModal', 'actionModal' => 'hide']);
+    }
     public function render()
     {
         $st = State::where('name','like',"%{$this->search}%")->get();
@@ -78,7 +86,10 @@ class StatesIndex extends Component
         // $st = State::all();
 
         return view('livewire.state.states-index',
-            ['States'=>$st]
+            [
+            'States'=>$st,
+            'countrty' => Country::all()
+            ]
         )->layout('layouts.main');
     }
 }

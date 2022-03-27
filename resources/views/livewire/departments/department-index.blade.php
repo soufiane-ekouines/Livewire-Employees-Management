@@ -2,21 +2,21 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">States</h1>
+        <h1 class="h3 mb-0 text-gray-800">Departements</h1>
     </div>
     <div class="row">
         <div class="card  mx-auto">
             <div>
-                @if (session()->has('States_message'))
+                @if (session()->has('Departements_message'))
                     <div class="alert alert-success">
-                        {{ session('States_message') }}
+                        {{ session('Departements_message') }}
                     </div>
                 @endif
             </div>
             <div class="card-header">
                 <div class="row">
                     <div class="col">
-                        <form method="GET" action="{{ route('states.index') }}">
+                        <form method="GET" action="{{ route('Departments.index') }}">
                             <div class="form-row align-items-center">
                                 <div class="col">
                                     <input type="search" wire:model="search" class="form-control mb-2" id="inlineFormInput"
@@ -33,7 +33,7 @@
                     <div>
                         <!-- Button trigger modal Create -->
                     <button type="button" class="btn btn-primary" wire:click="Openmodel">
-                        New States
+                        New Departements
                     </button>
                     </div>
                 </div>
@@ -45,22 +45,20 @@
                     <thead>
                         <tr>
                             <th scope="col">#Id</th>
-                            <th scope="col">Country</th>
-                            <th scope="col">States</th>
+                            <th scope="col">Departements</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($States as $state)
+                        @forelse ($Departements as $Departement)
                             <tr>
-                                <th scope="row">{{ $state->id }}</th>
-                                <td>{{ $state->country->name }}</td>
-                                <td>{{ $state->name }}</td>
+                                <th scope="row">{{ $Departement->id }}</th>
+                                <td>{{ $Departement->name }}</td>
                                 <td>
-                                    <a wire:click="edit({{ $state->id }})" href="#" class="btn btn-success">Edit</a>
+                                    <a wire:click="edit({{ $Departement->id }})" href="#" class="btn btn-success">Edit</a>
                                 </td>
                                 <td>
-                                    <a wire:click="delete({{ $state->id }})" href="#" class="btn btn-danger">Delete</a>
+                                    <a wire:click="delete({{ $Departement->id }})" href="#" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @empty
@@ -70,48 +68,25 @@
                     </tbody>
                 </table>
                 <div>
-                    {{-- {{ $States->links('pagination::bootstrap-4') }} --}}
-                    {{-- {{ $States->links() }} --}}
+                    {{-- {{ $Departements->links('pagination::bootstrap-4') }} --}}
+                    {{-- {{ $Departements->links() }} --}}
 
                 </div>
             </div>
         </div>
      <!-- Modal -->
-     <div class="modal fade" id="StatesModal" tabindex="-1" aria-labelledby="StatesModalLabel" aria-hidden="true">
+     <div class="modal fade" id="DepartementsModal" tabindex="-1" aria-labelledby="DepartementsModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="StatesModalLabel">States</h5>
+                    <h5 class="modal-title" id="DepartementsModalLabel">Departements</h5>
                     <button type="button" class="close" wire:click="Closemodel">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group row">
-                            <label for="country_id"
-                                class="col-md-4 col-form-label text-md-right">{{ __('country_id') }}</label>
-
-                            <div class="col-md-6">
-                                <select class="form-control" name="country_id" id="country_id"  wire:model.defer="country_id">
-                                @foreach ($countrty as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
-                                </select>
-
-                                {{-- <input id="country_id" type="text"
-                                    class="form-control @error('name') is-invalid @enderror"
-                                    wire:model.defer="country_id"> --}}
-
-                                @error('country_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
+                            <div class="form-group row">
                             <label for="name"
                                 class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
 
@@ -135,9 +110,9 @@
                     <button type="button" class="btn btn-secondary" wire:click="Closemodel">Close</button>
                     <div wire:loading.remove>
                     @if ($editMode)
-                        <button  type="button" class="btn btn-primary" wire:click="update">Update States</button>
+                        <button  type="button" class="btn btn-primary" wire:click="update">Update Departements</button>
                     @else
-                        <button type="button" class="btn btn-primary" wire:click="storeStates">Store States</button>
+                        <button type="button" class="btn btn-primary" wire:click="storeDepartements">Store Departements</button>
                     @endif
                 </div>
                     <div class="col" wire:loading>

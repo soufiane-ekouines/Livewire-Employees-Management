@@ -69,7 +69,7 @@
                         <a class="collapse-item" href="{{ route('cities.index') }}">City</a> --}}
                         <a class="collapse-item" href="{{ route('country.index') }}">Country</a>
                         <a class="collapse-item" href="{{ route('states.index') }}">State</a>
-                        <a class="collapse-item" href="#">Department</a>
+                        <a class="collapse-item" href="{{ route('Departments.index') }}">Department</a>
                         <a class="collapse-item" href="#">City</a>
                     </div>
                 </div>
